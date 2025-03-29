@@ -235,7 +235,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("LearningStyles")}
                 </div>
-                <hr className="border-gray-300" />
     
                 {/* Download Button */}
                 <div className="mt-2">

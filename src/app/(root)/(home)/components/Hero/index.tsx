@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
-import TestContent from './TestContent';
 import PersonalityExplorer from "../PersonalityExplorer";
 import InterestExplorer from "../InterestExplorer";
 import CareerMotivators from "../CareerMotivators";
@@ -29,14 +28,18 @@ const Hero = () => {
         }
     };
 
+      
     return (
-        <div className="flex min-h-screen  justify-center px-4 md:px-8 lg:px-12">
+        <div className="flex min-h-screen justify-center px-4 md:px-8 lg:px-12">
             <div className="w-full max-w-7xl flex">
                 <Sidebar activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
-                <TestContent activeComponent={activeComponent} />
+                <div className="flex-1">
+                    {renderComponent()}
+                </div>
             </div>
         </div>
     );
+   
 };
 
 export default Hero;
