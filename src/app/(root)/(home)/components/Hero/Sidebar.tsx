@@ -63,8 +63,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
         }
     };
 
+
     return (
-        <div className="w-72 py-6 px-4  h-screen overflow-y-auto border-r border-gray-200">
+        <div className="w-72 py-6 px-4 h-screen overflow-y-auto border-r border-gray-200">
             <div className="flex flex-col space-y-4">
                 {/* Personality Explorer */}
                 <div>
@@ -98,7 +99,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("PersonalityExplorer")}
                 </div>
-
+                <hr className="border-gray-300" />
+    
                 {/* Interest Explorer */}
                 <div>
                     <div className={`bg-white rounded-lg ${
@@ -131,7 +133,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("InterestExplorer")}
                 </div>
-
+                <hr className="border-gray-300" />
+    
                 {/* Career Motivators */}
                 <div>
                     <div className={`bg-white rounded-lg ${
@@ -164,7 +167,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("CareerMotivators")}
                 </div>
-
+                <hr className="border-gray-300" />
+    
                 {/* Emotional Intelligence */}
                 <div>
                     <div className={`bg-white rounded-lg ${
@@ -197,7 +201,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("EmotionalIntelligence")}
                 </div>
-
+                <hr className="border-gray-300" />
+    
                 {/* Learning Styles */}
                 <div>
                     <div className={`bg-white rounded-lg ${
@@ -230,7 +235,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
                     </div>
                     {renderContent("LearningStyles")}
                 </div>
-
+                <hr className="border-gray-300" />
+    
                 {/* Download Button */}
                 <div className="mt-2">
                     <button className="flex items-center justify-center w-full py-3 px-4 bg-white border border-blue-500 text-blue-600 rounded-lg shadow-md hover:bg-blue-50 transition-all">
@@ -241,6 +247,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
             </div>
         </div>
     );
+ 
 };
 
 export default Sidebar;
