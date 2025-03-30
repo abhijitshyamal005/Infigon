@@ -33,7 +33,7 @@ const CareerMotivators: React.FC = () => {
         {motivators.map(({ id, text, color }) => (
           <div
             key={id}
-            className={`flex items-center border-2 ${color} rounded-full px-4 py-2 space-x-3`}
+            className={`flex items-center border-2  rounded-full px-4 py-2 space-x-3`}
           >
             <span className={`w-8 h-8 flex items-center justify-center text-white font-semibold text-lg rounded-full ${color}`}>{id}</span>
             <span className="text-gray-700">{text}</span>
