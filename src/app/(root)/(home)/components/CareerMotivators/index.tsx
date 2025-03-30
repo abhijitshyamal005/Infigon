@@ -2,16 +2,16 @@ import React from "react";
 
 const CareerMotivators: React.FC = () => {
   const motivators = [
-    { id: 1, text: "Achievement and Results", color: "cyan-400" },
-    { id: 2, text: "Helping Others", color: "amber-500" },
-    { id: 3, text: "Financial Rewards", color: "teal-300" },
-    { id: 4, text: "Creativity and Innovation", color: "yellow-400" },
-    { id: 5, text: "Security and Stability", color: "purple-400" },
-    { id: 6, text: "Leadership and Influence", color: "blue-400" },
-    { id: 7, text: "Continuous Learning", color: "indigo-500" },
-    { id: 8, text: "Independence", color: "pink-400" },
-    { id: 9, text: "Teamwork and Collaboration", color: "rose-400" },
-    { id: 10, text: "Flexibility and Work-Life Balance", color: "orange-400" },
+    { id: 1, text: "Achievement and Results", color: "border-cyan-400 bg-cyan-100" },
+    { id: 2, text: "Helping Others", color: "border-amber-500 bg-amber-100" },
+    { id: 3, text: "Financial Rewards", color: "border-teal-300 bg-teal-100" },
+    { id: 4, text: "Creativity and Innovation", color: "border-yellow-400 bg-yellow-100" },
+    { id: 5, text: "Security and Stability", color: "border-purple-400 bg-purple-100" },
+    { id: 6, text: "Leadership and Influence", color: "border-blue-400 bg-blue-100" },
+    { id: 7, text: "Continuous Learning", color: "border-indigo-500 bg-indigo-100" },
+    { id: 8, text: "Independence", color: "border-pink-400 bg-pink-100" },
+    { id: 9, text: "Teamwork and Collaboration", color: "border-rose-400 bg-rose-100" },
+    { id: 10, text: "Flexibility and Work-Life Balance", color: "border-orange-400 bg-orange-100" },
   ];
 
   const applications = [
@@ -27,36 +27,36 @@ const CareerMotivators: React.FC = () => {
   ];
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 max-w-5xl mx-auto">
-      <h2 className="text-2xl font-bold text-blue-900 mb-6 text-center">TOP 10 Career Motivators</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+    <div className="p-8 max-w-4xl mx-auto">
+      <h2 className="text-xl font-bold text-blue-900 mb-4">TOP 10 Career Motivators</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {motivators.map(({ id, text, color }) => (
           <div
             key={id}
-            className={`flex items-center border-2 border-${color} text-${color.replace('-400', '-600')} rounded-full px-6 py-3 space-x-4 shadow-md`}
+            className={`flex items-center border-2 ${color} rounded-full px-4 py-2 space-x-3`}
           >
-            <span className={`w-10 h-10 flex items-center justify-center font-semibold text-lg rounded-full text-white bg-${color}`}>{id}</span>
-            <span className="font-semibold text-gray-800 text-lg">{text}</span>
+            <span className={`w-8 h-8 flex items-center justify-center text-white font-semibold text-lg rounded-full ${color}`}>{id}</span>
+            <span className="text-gray-700">{text}</span>
           </div>
         ))}
       </div>
       
-      <h3 className="text-xl font-bold text-blue-900 mt-10 text-center">Purpose and Applications of Career Motivators</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+      <h3 className="text-lg font-bold text-blue-900 mt-8">Purpose and Applications of Career Motivators in career development include</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         {applications.map((app, index) => (
-          <div key={index} className="bg-gray-100 p-6 rounded-md shadow-md">
-            <h4 className="font-semibold text-gray-800 text-lg">{app}</h4>
-            <p className="text-sm text-gray-600 mt-2">Focuses on concrete, tangible information and present realities.</p>
+          <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm">
+            <h4 className="font-semibold text-gray-800">{app}</h4>
+            <p className="text-sm text-gray-600">Focuses on concrete, tangible information and present realities.</p>
           </div>
         ))}
       </div>
       
-      <h3 className="text-xl font-bold text-blue-900 mt-10 text-center">Benefits of Understanding Career Motivators</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+      <h3 className="text-lg font-bold text-blue-900 mt-8">Benefits of understanding interest using career motivators for career planning include</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         {benefits.map((benefit, index) => (
-          <div key={index} className="bg-gray-100 p-6 rounded-md shadow-md">
-            <h4 className="font-semibold text-gray-800 text-lg">{benefit}</h4>
-            <p className="text-sm text-gray-600 mt-2">Focuses on concrete, tangible information and present realities.</p>
+          <div key={index} className="bg-gray-100 p-4 rounded-md shadow-sm">
+            <h4 className="font-semibold text-gray-800">{benefit}</h4>
+            <p className="text-sm text-gray-600">Focuses on concrete, tangible information and present realities.</p>
           </div>
         ))}
       </div>
