@@ -2,17 +2,18 @@ import React from "react";
 
 const CareerMotivators: React.FC = () => {
   const motivators = [
-    { id: 1, text: "Achievement and Results", color: "border-cyan-400 bg-cyan-100" },
-    { id: 2, text: "Helping Others", color: "border-amber-500 bg-amber-100" },
-    { id: 3, text: "Financial Rewards", color: "border-teal-300 bg-teal-100" },
-    { id: 4, text: "Creativity and Innovation", color: "border-yellow-400 bg-yellow-100" },
-    { id: 5, text: "Security and Stability", color: "border-purple-400 bg-purple-100" },
-    { id: 6, text: "Leadership and Influence", color: "border-blue-400 bg-blue-100" },
-    { id: 7, text: "Continuous Learning", color: "border-indigo-500 bg-indigo-100" },
-    { id: 8, text: "Independence", color: "border-pink-400 bg-pink-100" },
-    { id: 9, text: "Teamwork and Collaboration", color: "border-rose-400 bg-rose-100" },
-    { id: 10, text: "Flexibility and Work-Life Balance", color: "border-orange-400 bg-orange-100" },
-  ];
+  { id: 1, text: "Achievement and Results", color: "border-cyan-400", bg: "bg-cyan-400" },
+  { id: 2, text: "Helping Others", color: "border-amber-500", bg: "bg-amber-400" },
+  { id: 3, text: "Financial Rewards", color: "border-teal-300", bg: "bg-teal-400" },
+  { id: 4, text: "Creativity and Innovation", color: "border-yellow-400", bg: "bg-yellow-400" },
+  { id: 5, text: "Security and Stability", color: "border-purple-400", bg: "bg-purple-400" },
+  { id: 6, text: "Leadership and Influence", color: "border-blue-400", bg: "bg-blue-400" },
+  { id: 7, text: "Continuous Learning", color: "border-indigo-500", bg: "bg-indigo-400" },
+  { id: 8, text: "Independence", color: "border-pink-400", bg: "bg-pink-400" },
+  { id: 9, text: "Teamwork and Collaboration", color: "border-rose-400", bg: "bg-rose-400" },
+  { id: 10, text: "Flexibility and Work-Life Balance", color: "border-orange-400", bg: "bg-orange-400" }
+]
+
 
   const applications = [
     "Enhanced Job Satisfaction",
@@ -30,13 +31,13 @@ const CareerMotivators: React.FC = () => {
     <div className="p-8 max-w-4xl mx-auto">
       <h2 className="text-xl font-bold text-blue-900 mb-4">TOP 10 Career Motivators</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {motivators.map(({ id, text, color }) => (
+        {motivators.map(({ id, text, color , bg }) => (
           <div
             key={id}
-            className={`flex items-center border-2  rounded-full px-4 py-2 space-x-3`}
+            className={`flex items-center border-2 ${bg}  rounded-full px-4 py-2 space-x-3`}
           >
             <span className={`w-8 h-8 flex items-center justify-center text-white font-semibold text-lg rounded-full ${color}`}>{id}</span>
-            <span className="text-gray-700">{text}</span>
+            <span className="">{text}</span>
           </div>
         ))}
       </div>
