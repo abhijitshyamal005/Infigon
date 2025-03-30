@@ -90,17 +90,27 @@ const TestContent: React.FC<TestContentProps> = ({ activeComponent }) => {
     };
 
     return (
-        <div className="flex-1 p-8">
-            <div className={`mb-6 p-4 rounded-lg shadow-md ${activeTest.bgColor} ${activeTest.borderColor} border`}>
-                <div className="flex items-center gap-3">
-                    <span className={`font-medium ${activeTest.textColor}`}>{activeTest.testNumber}</span>
-                    <h1 className={`text-xl font-bold ${activeTest.textColor}`}>{activeTest.title}</h1>
+        <div className="flex-1 p-4 sm:p-6 lg:p-8">
+            {/* Header Section */}
+            <div
+                className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg shadow-md ${activeTest.bgColor} ${activeTest.borderColor} border`}
+            >
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                    <span className={`font-medium text-sm sm:text-base ${activeTest.textColor}`}>
+                        {activeTest.testNumber}
+                    </span>
+                    <h1 className={`text-lg sm:text-xl font-bold ${activeTest.textColor}`}>
+                        {activeTest.title}
+                    </h1>
                 </div>
             </div>
 
-            {renderContent()}
+            {/* Dynamic Content */}
+            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                {renderContent()}
+            </div>
         </div>
     );
 };
 
-export default TestContent; 
+export default TestContent;

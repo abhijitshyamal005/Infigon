@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FiDownload } from 'react-icons/fi';
+import { FiDownload, FiMenu, FiX } from 'react-icons/fi';
 
 interface SidebarProps {
     activeComponent: string;
@@ -9,6 +9,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }) => {
     const [expandedItem, setExpandedItem] = useState<string | null>("PersonalityExplorer");
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
     const handleItemClick = (id: string) => {
         setActiveComponent(id);
@@ -77,185 +78,225 @@ const Sidebar: React.FC<SidebarProps> = ({ activeComponent, setActiveComponent }
         }
     };
 
-
     return (
-        <div className="w-72 py-6 px-4 h-full overflow-y-auto border-r border-gray-200">
-            <div className="relative">
-                <div className="sticky top-0 max-h-screen">
-                    <div className="flex flex-col space-y-4">
-                        {/* Personality Explorer */}
-                        <div>
-                            <div className={`bg-white rounded-lg ${activeComponent === "PersonalityExplorer"
-                                ? "border-r-4 border-r-blue-500 shadow-md"
-                                : ""
-                                }`}>
-                                <button
-                                    onClick={() => handleItemClick("PersonalityExplorer")}
-                                    className="w-full p-4"
+        <div className="relative">
+            {/* Toggle Button for Mobile */}
+            <button
+                className="lg:hidden fixed top-12 left-4 z-50 bg-blue-500 text-white p-2 rounded-md shadow-md"
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+                {isSidebarOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+            </button>
+
+            {/* Sidebar */}
+            <div
+                className={`fixed lg:static top-0 left-0 h-full bg-white border-r border-gray-200 z-40 transform transition-transform duration-300 ease-in-out ${
+                    isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                } lg:translate-x-0 lg:w-72 w-64 py-6 px-4 overflow-y-auto`}
+            >
+                <div className="relative">
+                    <div className="sticky top-0 max-h-screen">
+                        <div className="flex flex-col space-y-4">
+                            {/* Personality Explorer */}
+                            <div>
+                                <div
+                                    className={`bg-white rounded-lg ${
+                                        activeComponent === "PersonalityExplorer"
+                                            ? "border-r-4 border-r-blue-500 shadow-md"
+                                            : ""
+                                    }`}
                                 >
-                                    <div className="flex items-center gap-3">
-                                        <Image
-                                            src="/p1.png"
-                                            alt="Personality"
-                                            width={24}
-                                            height={24}
-                                            className={`${activeComponent === "PersonalityExplorer"
-                                                ? "[filter:invert(31%)_sepia(98%)_saturate(1234%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
-                                                : ""
+                                    <button
+                                        onClick={() => handleItemClick("PersonalityExplorer")}
+                                        className="w-full p-4"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Image
+                                                src="/p1.png"
+                                                alt="Personality"
+                                                width={24}
+                                                height={24}
+                                                className={`${
+                                                    activeComponent === "PersonalityExplorer"
+                                                        ? "[filter:invert(31%)_sepia(98%)_saturate(1234%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
+                                                        : ""
                                                 }`}
-                                        />
-                                        <div className="flex flex-col items-start">
-                                            <span className="text-gray-600 text-sm">TEST 1</span>
-                                            <span className="text-blue-600 font-medium">Personality Explorer</span>
+                                            />
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-gray-600 text-sm">TEST 1</span>
+                                                <span className="text-blue-600 font-medium">Personality Explorer</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </button>
+                                </div>
+                                {renderContent("PersonalityExplorer")}
+                            </div>
+                            <hr className="border-gray-300" />
+
+                            {/* Interest Explorer */}
+                            <div>
+                                <div
+                                    className={`bg-white rounded-lg ${
+                                        activeComponent === "InterestExplorer"
+                                            ? "border-r-4 border-r-green-500 shadow-md"
+                                            : ""
+                                    }`}
+                                >
+                                    <button
+                                        onClick={() => handleItemClick("InterestExplorer")}
+                                        className="w-full p-4"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Image
+                                                src="/p2.png"
+                                                alt="Interest"
+                                                width={24}
+                                                height={24}
+                                                className={`${
+                                                    activeComponent === "InterestExplorer"
+                                                        ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(118deg)_brightness(94%)_contrast(101%)]"
+                                                        : ""
+                                                }`}
+                                            />
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-gray-600 text-sm">TEST 2</span>
+                                                <span className="text-green-600 font-medium">Interest Explorer</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                {renderContent("InterestExplorer")}
+                            </div>
+                            <hr className="border-gray-300" />
+
+                            {/* Career Motivators */}
+                            <div>
+                                <div
+                                    className={`bg-white rounded-lg ${
+                                        activeComponent === "CareerMotivators"
+                                            ? "border-r-4 border-r-orange-500 shadow-md"
+                                            : ""
+                                    }`}
+                                >
+                                    <button
+                                        onClick={() => handleItemClick("CareerMotivators")}
+                                        className="w-full p-4"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Image
+                                                src="/p3.png"
+                                                alt="Career"
+                                                width={24}
+                                                height={24}
+                                                className={`${
+                                                    activeComponent === "CareerMotivators"
+                                                        ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(118deg)_brightness(94%)_contrast(101%)]"
+                                                        : ""
+                                                }`}
+                                            />
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-gray-600 text-sm">TEST 3</span>
+                                                <span className="text-orange-500 font-medium">Career Motivators</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                {renderContent("CareerMotivators")}
+                            </div>
+                            <hr className="border-gray-300" />
+
+                            {/* Emotional Intelligence */}
+                            <div>
+                                <div
+                                    className={`bg-white rounded-lg ${
+                                        activeComponent === "EmotionalIntelligence"
+                                            ? "border-r-4 border-r-blue-400 shadow-md"
+                                            : ""
+                                    }`}
+                                >
+                                    <button
+                                        onClick={() => handleItemClick("EmotionalIntelligence")}
+                                        className="w-full p-4"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Image
+                                                src="/p4.png"
+                                                alt="Emotional"
+                                                width={24}
+                                                height={24}
+                                                className={`${
+                                                    activeComponent === "EmotionalIntelligence"
+                                                        ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
+                                                        : ""
+                                                }`}
+                                            />
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-gray-600 text-sm">TEST 4</span>
+                                                <span className="text-blue-400 font-medium">Emotional Intelligence</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                {renderContent("EmotionalIntelligence")}
+                            </div>
+                            <hr className="border-gray-300" />
+
+                            {/* Learning Styles */}
+                            <div>
+                                <div
+                                    className={`bg-white rounded-lg ${
+                                        activeComponent === "LearningStyles"
+                                            ? "border-r-4 border-r-purple-500 shadow-md"
+                                            : ""
+                                    }`}
+                                >
+                                    <button
+                                        onClick={() => handleItemClick("LearningStyles")}
+                                        className="w-full p-4"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <Image
+                                                src="/p5.png"
+                                                alt="Learning"
+                                                width={24}
+                                                height={24}
+                                                className={`${
+                                                    activeComponent === "LearningStyles"
+                                                        ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
+                                                        : ""
+                                                }`}
+                                            />
+                                            <div className="flex flex-col items-start">
+                                                <span className="text-gray-600 text-sm">TEST 5</span>
+                                                <span className="text-purple-500 font-medium">Learning Styles</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                {renderContent("LearningStyles")}
+                            </div>
+
+                            {/* Download Button */}
+                            <div className="mt-2">
+                                <button className="flex items-center justify-center w-full py-3 px-4 bg-white border border-blue-500 text-blue-600 rounded-lg shadow-md hover:bg-blue-50 transition-all">
+                                    <span className="font-medium">Download Report Card</span>
+                                    <FiDownload className="w-5 h-5 ml-2" />
                                 </button>
                             </div>
-                            {renderContent("PersonalityExplorer")}
-                        </div>
-                        <hr className="border-gray-300" />
-
-                        {/* Other sections remain unchanged */}
-                        {/* Interest Explorer */}
-                        <div>
-                            <div className={`bg-white rounded-lg ${activeComponent === "InterestExplorer"
-                                ? "border-r-4 border-r-green-500 shadow-md"
-                                : ""
-                                }`}>
-                                <button
-                                    onClick={() => handleItemClick("InterestExplorer")}
-                                    className="w-full p-4"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <Image
-                                            src="/p2.png"
-                                            alt="Interest"
-                                            width={24}
-                                            height={24}
-                                            className={`${activeComponent === "InterestExplorer"
-                                                ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(118deg)_brightness(94%)_contrast(101%)]"
-                                                : ""
-                                                }`}
-                                        />
-                                        <div className="flex flex-col items-start">
-                                            <span className="text-gray-600 text-sm">TEST 2</span>
-                                            <span className="text-green-600 font-medium">Interest Explorer</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                            {renderContent("InterestExplorer")}
-                        </div>
-                        <hr className="border-gray-300" />
-
-                        {/* Career Motivators */}
-                        <div>
-                            <div className={`bg-white rounded-lg ${activeComponent === "CareerMotivators"
-                                ? "border-r-4 border-r-orange-500 shadow-md"
-                                : ""
-                                }`}>
-                                <button
-                                    onClick={() => handleItemClick("CareerMotivators")}
-                                    className="w-full p-4"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <Image
-                                            src="/p3.png"
-                                            alt="Career"
-                                            width={24}
-                                            height={24}
-                                            className={`${activeComponent === "CareerMotivators"
-                                                ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(118deg)_brightness(94%)_contrast(101%)]"
-                                                : ""
-                                                }`}
-                                        />
-                                        <div className="flex flex-col items-start">
-                                            <span className="text-gray-600 text-sm">TEST 3</span>
-                                            <span className="text-orange-500 font-medium">Career Motivators</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                            {renderContent("CareerMotivators")}
-                        </div>
-                        <hr className="border-gray-300" />
-
-                        {/* Emotional Intelligence */}
-                        <div>
-                            <div className={`bg-white rounded-lg ${activeComponent === "EmotionalIntelligence"
-                                ? "border-r-4 border-r-blue-400 shadow-md"
-                                : ""
-                                }`}>
-                                <button
-                                    onClick={() => handleItemClick("EmotionalIntelligence")}
-                                    className="w-full p-4"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <Image
-                                            src="/p4.png"
-                                            alt="Emotional"
-                                            width={24}
-                                            height={24}
-                                            className={`${activeComponent === "EmotionalIntelligence"
-                                                ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
-                                                : ""
-                                                }`}
-                                        />
-                                        <div className="flex flex-col items-start">
-                                            <span className="text-gray-600 text-sm">TEST 4</span>
-                                            <span className="text-blue-400 font-medium">Emotional Intelligence</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                            {renderContent("EmotionalIntelligence")}
-                        </div>
-                        <hr className="border-gray-300" />
-
-                        {/* Learning Styles */}
-                        <div>
-                            <div className={`bg-white rounded-lg ${activeComponent === "LearningStyles"
-                                ? "border-r-4 border-r-purple-500 shadow-md"
-                                : ""
-                                }`}>
-                                <button
-                                    onClick={() => handleItemClick("LearningStyles")}
-                                    className="w-full p-4"
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <Image
-                                            src="/p5.png"
-                                            alt="Learning"
-                                            width={24}
-                                            height={24}
-                                            className={`${activeComponent === "LearningStyles"
-                                                ? "[filter:invert(48%)_sepia(98%)_saturate(427%)_hue-rotate(206deg)_brightness(97%)_contrast(101%)]"
-                                                : ""
-                                                }`}
-                                        />
-                                        <div className="flex flex-col items-start">
-                                            <span className="text-gray-600 text-sm">TEST 5</span>
-                                            <span className="text-purple-500 font-medium">Learning Styles</span>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                            {renderContent("LearningStyles")}
-                        </div>
-
-                        {/* Download Button */}
-                        <div className="mt-2">
-                            <button className="flex items-center justify-center w-full py-3 px-4 bg-white border border-blue-500 text-blue-600 rounded-lg shadow-md hover:bg-blue-50 transition-all">
-                                <span className="font-medium">Download Report Card</span>
-                                <FiDownload className="w-5 h-5 ml-2" />
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Overlay for Mobile */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                ></div>
+            )}
         </div>
     );
-
 };
 
 export default Sidebar;
